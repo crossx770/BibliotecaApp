@@ -13,7 +13,9 @@
         $scope.myFunction= function()
         {
             OrderService.post12($scope.order);
-            window.location.href="/#/orderList";
+            window.setTimeout(function() {
+                window.location.href = "#/orderList";
+            }, 500);
         }
     }
 })();

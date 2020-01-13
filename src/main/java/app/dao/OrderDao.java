@@ -40,6 +40,38 @@ public class OrderDao {
         return orderList;
     }
 
+
+    public static List<Order> findAll(String username) throws SQLException {
+        List<Order> orderList = new ArrayList<Order>();
+
+        String sql = "SELECT o.id, b.name, o.borrowDate FROM orders o,clienti c, carti b WHERE o.personID =  (SELECT id from clienti where username = ?) && o.bookID = b.ID group by id";
+
+        connect();
+
+        PreparedStatement statement = jdbcConnection.prepareStatement(sql);
+        statement.setString(1, username);
+        ResultSet resultSet = statement.executeQuery();
+
+
+        while (resultSet.next()) {
+            int id = resultSet.getInt("o.id");
+            String bookTitle = resultSet.getString("b.name");
+            String borrowDate = resultSet.getString("o.borrowDate");
+
+            Order order = new Order(id,"",bookTitle, borrowDate);
+            orderList.add(order);
+
+        }
+
+        resultSet.close();
+        statement.close();
+
+        disconnect();
+
+        return orderList;
+    }
+
+
     public Order findOne(int id) throws SQLException {
         Order order = null;
         String sql = "SELECT c.username, b.name, o.borrowDate FROM orders o,clienti c, carti b WHERE o.id = ? && o.personID = c.id && o.bookID = b.id";

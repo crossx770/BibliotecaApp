@@ -151,7 +151,7 @@ public class CartiResource extends HttpServlet {
             try {
                 //response.sendRedirect("http://www.google.com");
                 cartiDao.addCarti(name, author, genre);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("list.html");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("listCarti.html");
                 dispatcher.forward(request, response);
             } catch (SQLException e) {
                 e.printStackTrace();

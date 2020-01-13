@@ -1,6 +1,5 @@
 package app.dao;
 
-import app.model.User;
 import app.util.Constants;
 
 import java.sql.*;
@@ -28,6 +27,9 @@ public class UserDao {
 
         return authenticate;
     }
+
+
+
     public static void connect() throws SQLException {
         if (jdbcConnection == null || jdbcConnection.isClosed()) {
             try {

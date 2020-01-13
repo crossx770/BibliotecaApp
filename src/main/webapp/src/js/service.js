@@ -13,9 +13,13 @@
 
 
 
+
     function OrderService($http) {
       return {
           list: function () {
+            return $http.get('order');
+          },
+          listUser: function () {
             return $http.get('order');
           },
           del:function(id){

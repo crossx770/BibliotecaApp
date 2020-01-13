@@ -22,8 +22,7 @@ public class UserLogoutServlet extends HttpServlet {
         if (session != null) {
             session.removeAttribute("username");
             session.invalidate();
-            RequestDispatcher dispatcher = request.getRequestDispatcher("#/login.html");
-            dispatcher.forward(request, response);
+            response.sendRedirect("#/login");
         }
     }
 }

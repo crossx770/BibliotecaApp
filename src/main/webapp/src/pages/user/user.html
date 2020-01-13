@@ -1,0 +1,29 @@
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h3 class="panel-title">Todo List</h3>
+    </div>
+    <div>
+        <table class="table">
+            <tr>
+                <td>Book Title</td>
+                <td>Borrow Date</td>
+            </tr>
+            <tr ng-repeat="order1 in order">
+                <td>{{order1.bookTitle}}</td>
+                <td>{{order1.borrowDate}}</td>
+            </tr>
+
+
+        </table>
+
+
+    </div>
+
+
+
+
+</div>
+
+<div >
+    <a href="#/orderPut/">Insert</a>
+</div>

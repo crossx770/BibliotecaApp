@@ -1,7 +1,6 @@
 package app.resource;
 
 import app.dao.OrderDao;
-import app.model.Carti;
 import app.model.Order;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -40,20 +39,27 @@ public class OrderResource extends HttpServlet {
 
         try {
             // Connect to the database
-            orderDao.connect();
-
-            if (id1 != null) {
-                int id = Integer.parseInt(request.getParameter("id"));
-                Order order = orderDao.findOne(id);
-                //todoDao.delete_from_table(id);
-                json = objectMapper.writeValueAsString(order);
-            } else {
-                List<Order> order = orderDao.findAll();
+            OrderDao.connect();
+            HttpSession session = request.getSession(false);
+            if(session.getAttribute("username").equals("admin")) {
+                if (id1 != null) {
+                    int id = Integer.parseInt(request.getParameter("id"));
+                    Order order = orderDao.findOne(id);
+                    //todoDao.delete_from_table(id);
+                    json = objectMapper.writeValueAsString(order);
+                } else {
+                    List<Order> order = orderDao.findAll();
+                    json = objectMapper.writeValueAsString(order);
+                }
+            }
+            else {
+                String username = (String) session.getAttribute("username");
+                List<Order> order = orderDao.findAll(username);
                 json = objectMapper.writeValueAsString(order);
             }
 
             // Disconnect from the database
-            orderDao.disconnect();
+            OrderDao.disconnect();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -64,7 +70,7 @@ public class OrderResource extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession(false);
-        if (session != null) {
+        if (session != null ) {
             // set response content type
             response.setContentType("application/json");
 

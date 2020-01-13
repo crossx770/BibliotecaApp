@@ -22,9 +22,14 @@
             {
                 templateUrl: 'src/pages/error.html'
             })
+            .when('/userList',
+            {
+                templateUrl: 'src/pages/user/user.html',
+                controller: 'OrderUserCtrl'
+            })
             .when('/cartiList',
             {
-                templateUrl: 'src/pages/cartiOperation/list/list.html',
+                templateUrl: 'src/pages/cartiOperation/list/listCarti.html',
                 controller: 'CartiListCtrl'
 
             })
@@ -73,7 +78,7 @@
                     templateUrl: 'src/pages/orderOperation/update/update.html',
                     controller: 'OrderUpdtCtrl'
                 })
-           .otherwise({redirectTo: '/login'});
+           .otherwise({redirectTo: '/homeAdmin'});
     }
 
 })();

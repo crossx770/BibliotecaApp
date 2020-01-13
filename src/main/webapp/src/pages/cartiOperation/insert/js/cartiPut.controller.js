@@ -13,7 +13,9 @@
         $scope.myFunction= function()
         {
             CartiService.post12($scope.carti);
-            window.location.href="#/cartiList";
+            window.setTimeout(function() {
+                window.location.href = "#/cartiList";
+            }, 500);
         }
     }
 })();

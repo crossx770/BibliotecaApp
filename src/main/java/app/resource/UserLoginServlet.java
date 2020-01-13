@@ -1,10 +1,15 @@
 package app.resource;
 
+import app.dao.OrderDao;
 import app.dao.UserDao;
+import app.model.Order;
 import app.model.User;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.*;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +18,13 @@ import javax.servlet.http.*;
 @WebServlet("/login")
 public class UserLoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    private UserDao userDao;
+
+
+    @Override
+    public void init() throws ServletException {
+        userDao = new UserDao();
+    }
 
     public UserLoginServlet() {
         super();
@@ -42,7 +54,7 @@ public class UserLoginServlet extends HttpServlet {
             } else if (authenticate == true ){
                 session = request.getSession(true);
                 session.setAttribute("username",username );
-                response.sendRedirect("#/error");
+                response.sendRedirect("#/userList");
             } else {
                 response.sendRedirect("#/error");
             }

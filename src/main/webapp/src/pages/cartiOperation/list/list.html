@@ -1,0 +1,34 @@
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h3 class="panel-title">Todo List</h3>
+    </div>
+    <div>
+        <table class="table">
+            <tr>
+                <td>Book title</td>
+                <td>Operation</td>
+            </tr>
+            <tr ng-repeat="carte in carti">
+                <td><a href="#/cartiDetail/{{carte.id}}">{{carte.name}}</a></td>
+                <td><a href="#/cartiDelete/{{carte.id}}">delete</a>
+                    <a href="#/cartiUpdate/{{carte.id}}">update</a>
+                </td>
+            </tr>
+
+
+        </table>
+
+
+    </div>
+
+
+
+
+</div>
+
+<div >
+    <a href="#/cartiPut/">Insert</a>
+
+    <br><br>
+    <a href="/logout">Logout</a>
+</div>

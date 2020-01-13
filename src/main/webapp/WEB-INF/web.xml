@@ -10,20 +10,38 @@
     </welcome-file-list>
 
     <display-name>CRUD Servlet</display-name>
-
-    <servlet>
-    <servlet-name>TodoResource</servlet-name>
-    <servlet-class>ro.mindit.todo.resource.TodoResource</servlet-class>
-    <load-on-startup>1</load-on-startup>
-</servlet>
     <servlet>
         <servlet-name>CartiResource</servlet-name>
-        <servlet-class>ro.mindit.todo.resource.CartiResource</servlet-class>
+        <servlet-class>app.resource.CartiResource</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>OrderResource</servlet-name>
+        <servlet-class>app.resource.OrderResource</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet>
+        <servlet-name>UserLoginServlet</servlet-name>
+        <servlet-class>app.resource.UserLoginServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>UserLogoutServlet</servlet-name>
+        <servlet-class>app.resource.UserLogoutServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>TodoResource</servlet-name>
-        <url-pattern>/todos/*</url-pattern>
+        <servlet-name>UserLogoutServlet</servlet-name>
+        <url-pattern>/logout/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserLoginServlet</servlet-name>
+        <url-pattern>/login/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderResource</servlet-name>
+        <url-pattern>/order/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CartiResource</servlet-name>

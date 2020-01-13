@@ -3,11 +3,46 @@
     'use strict';
 
     angular.module("todoApp")
-        .service("TodoService", TodoService);
+        .service("OrderService", OrderService);
 
-    TodoService.$inject = ['$http'];
+    angular.module("todoApp")
+            .service("CartiService", CartiService);
 
-    function TodoService($http) {
+    OrderService.$inject = ['$http'];
+    CartiService.$inject = ['$http'];
+
+
+
+    function OrderService($http) {
+      return {
+          list: function () {
+            return $http.get('order');
+          },
+          del:function(id){
+              var requestConfig = {
+                  params: {id:id}
+              };
+              return $http.delete('order',requestConfig);
+          },
+          post12:function(order){
+              return $http.post('order',order,{});
+          },
+          put:function(id,order){
+              var requestConfig={
+                  params:{id:id}
+              };
+              return $http.put('order',order,requestConfig);
+          },
+          get: function (id) {
+              var requestConfig = {
+                  params: {id: id}
+              };
+              return $http.get('order', requestConfig);
+          }
+      };
+    }
+
+    function CartiService($http) {
         return {
             list: function () {
                 return $http.get('carti');
@@ -41,6 +76,7 @@
 
         };
     }
+
 
 
 })();

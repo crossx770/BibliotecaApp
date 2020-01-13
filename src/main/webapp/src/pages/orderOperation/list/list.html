@@ -1,0 +1,31 @@
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h3 class="panel-title">Todo List</h3>
+    </div>
+    <div>
+        <table class="table">
+            <tr>
+                <td>Order ID</td>
+                <td>Operation</td>
+            </tr>
+            <tr ng-repeat="order1 in order">
+                <td><a href="#/orderDetail/{{order1.id}}">{{order1.username}}</a></td>
+                <td><a href="#/orderDelete/{{order1.id}}">delete</a>
+                    <a href="#/orderUpdate/{{order1.id}}">update</a>
+                </td>
+            </tr>
+
+
+        </table>
+
+
+    </div>
+
+
+
+
+</div>
+
+<div >
+    <a href="#/orderPut/">Insert</a>
+</div>

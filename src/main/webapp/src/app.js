@@ -10,33 +10,70 @@
         $locationProvider.hashPrefix('');
 
         $routeProvider
-            .when('/',
+            .when('/homeAdmin',
             {
-                templateUrl: 'src/pages/todo/list/list.html',
-                controller: 'TodoListCtrl'
+                templateUrl: 'src/pages/homeAdmin.html'
+            })
+            .when('/login',
+            {
+                templateUrl: 'src/pages/login.html'
+            })
+            .when('/error',
+            {
+                templateUrl: 'src/pages/error.html'
+            })
+            .when('/cartiList',
+            {
+                templateUrl: 'src/pages/cartiOperation/list/list.html',
+                controller: 'CartiListCtrl'
 
             })
-            .when('/todoDetail/:cartiId',
+            .when('/cartiDetail/:cartiId',
                 {
-                    templateUrl: 'src/pages/todo/details/detail.html',
-                    controller: 'TodoDetailCtrl'
+                    templateUrl: 'src/pages/cartiOperation/details/detail.html',
+                    controller: 'CartiDetailCtrl'
                 })
-            .when('/todoDelete/:cartiId',
+            .when('/cartiDelete/:cartiId',
                 {
-                    templateUrl: 'src/pages/todo/delete/delete.html',
-                    controller: 'TodoDeleteCtrl'
+                    templateUrl: 'src/pages/cartiOperation/delete/delete.html',
+                    controller: 'CartiDeleteCtrl'
                 })
-            .when('/todoPut',
+            .when('/cartiPut',
                 {
-                    templateUrl: 'src/pages/todo/insert/insert.html',
-                    controller: 'TodoPutCtrl'
+                    templateUrl: 'src/pages/cartiOperation/insert/insert.html',
+                    controller: 'CartiPutCtrl'
                 })
-            .when('/todoUpdate/:cartiId',
+            .when('/cartiUpdate/:cartiId',
                 {
-                    templateUrl: 'src/pages/todo/update/update.html',
-                    controller: 'TodoUpdtCtrl'
+                    templateUrl: 'src/pages/cartiOperation/update/update.html',
+                    controller: 'CartiUpdtCtrl'
                 })
-            .otherwise({redirectTo: '/'});
+             .when('/orderList',
+                 {
+                     templateUrl: 'src/pages/orderOperation/list/list.html',
+                     controller: 'OrderListCtrl'
+                 })
+             .when('/orderDetail/:orderId',
+                 {
+                     templateUrl: 'src/pages/orderOperation/detail/detail.html',
+                     controller: 'OrderDetailCtrl'
+                 })
+              .when('/orderDelete/:orderId',
+                {
+                    templateUrl: 'src/pages/orderOperation/delete/delete.html',
+                    controller: 'OrderDeleteCtrl'
+                })
+              .when('/orderPut',
+                {
+                    templateUrl: 'src/pages/orderOperation/insert/insert.html',
+                    controller: 'OrderPutCtrl'
+                })
+              .when('/orderUpdate/:orderId',
+                {
+                    templateUrl: 'src/pages/orderOperation/update/update.html',
+                    controller: 'OrderUpdtCtrl'
+                })
+           .otherwise({redirectTo: '/login'});
     }
 
 })();

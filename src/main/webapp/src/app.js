@@ -18,6 +18,7 @@
             {
                 templateUrl: 'src/pages/login.html'
             })
+
             .when('/error',
             {
                 templateUrl: 'src/pages/error.html'
@@ -78,7 +79,7 @@
                     templateUrl: 'src/pages/orderOperation/update/update.html',
                     controller: 'OrderUpdtCtrl'
                 })
-           .otherwise({redirectTo: '/homeAdmin'});
+           .otherwise({redirectTo: '/login'});
     }
 
 })();
